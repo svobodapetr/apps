@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo editor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
+</head>
+
+<body class="bg-dark white">
+
+    <div class="container">
+        <div class="text-center mt-20">
+            <img src="https://source.unsplash.com/random/800x600" id="image" alt="sample image">
+            <!-- <img src="images/photo.jpg" id="image" alt="sample image"> -->
+        </div>
+
+        <section class="maw-400 mx-auto">
+                <div>
+                    <label>Brightness</label>
+                    <input type="range" id="brightness" class="filter" value="100" min="0" max="200">
+                </div>
+
+                <div>
+                    <label>Saturation</label>
+                    <input type="range" id="saturation" class="filter" value="100" min="0" max="200">
+                </div>
+
+                <div>
+                    <label>Contrast</label>
+                    <input type="range" id="contrast" class="filter" value="100" min="0" max="200">
+                </div>
+
+                <div class="text-center">
+                    <button id="reset" class="bg-red white">Reset</button>
+                </div>
+        </section>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

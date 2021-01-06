@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
+</head>
+
+<body class="container text-center bg-dark white">
+
+    <header>
+        <h1>Countdown clock</h1>
+        <p>Pick a date that interests you and see how long you have to wait</p>
+    </header>
+
+    <main>
+        <form>
+            <input type="date" id="date_picker" class="maw-300 mt-30">
+        </form>
+        
+        <div><button id="start" class="bg-green white">Start countdown</button></div>
+
+        <section class="mt-30">
+            <h4><span id="date_text"></span></h4>
+
+            <div id="timer">
+                <h3 id="days"></h3>
+                <h3 id="hours"></h3>
+                <h3 id="minutes"></h3>
+                <h3 id="seconds"></h3>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

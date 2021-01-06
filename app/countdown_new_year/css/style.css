@@ -1,0 +1,55 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+#countdown {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#countdown td {
+    padding: 5px;
+}
+
+.date-values {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#countdown .date-keys td {
+    font-size: 1rem;
+    color: #bbb;
+}
+
+#hint {
+    font-size: 0.75rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 480px) {
+
+    .date-values {
+        font-size: 7vw;
+    }
+
+    #countdown .date-keys td {
+        font-size: 4vw;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .date-values {
+        font-size: 6vw;
+    }
+
+    #countdown .date-keys td {
+        font-size: 2.5vw;
+    }
+
+}

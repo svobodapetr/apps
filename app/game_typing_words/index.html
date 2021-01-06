@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - typing words</title>
+    <!-- <link rel="stylesheet" href="../../css/core.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
+</head>
+
+<body class="bg-light-gray">
+
+    <div id="game">
+
+        <header class="bg-dark p-20">
+            <h1 class="light-gray">Typing game</h1>
+
+            <button id="difficulty" class="pure-button bg-light-gray bold my-20">Difficulty</button>
+
+            <ul id="difficulty-settings" class="white p-0 hide">
+                <li>
+                    <button data-difficulty="easy" class="difficulty-level pure-button bg-blue white">Easy</button>
+                </li>
+
+                <li>
+                    <button data-difficulty="medium" class="difficulty-level pure-button bg-orange white my-20">Medium</button>
+                </li>
+
+                <li>
+                    <button data-difficulty="hard" class="difficulty-level pure-button bg-red white">Hard</button>
+                </li>
+            </ul>
+        </header>
+
+        <button id="start" class="pure-button bg-green my-30 white">Start</button>
+
+        <div class="absolute b-0 r-0 mb-20 mx-20">
+            <button class="rules pure-button bg-blue p-10 mx-20 white">
+                Explain Rules
+            </button>
+
+            <button class="pure-button bg-gray p-10 bold ">
+                <a href="statistics.html" class="no-underline white">Show statistics</a>
+            </button>
+        </div>
+
+        <span id="total-time" class="d-inline-block p-10 bold absolute b-0 l-0 mb-20 mx-20"></span>
+
+        <!-- GAME -->
+        <section id="game-screen"
+            class="bg-silver p-30 border-radius-large d-inline-block hide absolute perfect-center">
+            <div id="scoreboard" class="mb-30 py-10">
+                <span id="time" class="hide float-left">
+                    <span>Time left:</span>
+                    <span id="time-left"></span>s
+                </span>
+
+                <span class="float-right">
+                    <span>Score:</span>
+                    <span id="score-value"></span>
+                </span>
+            </div>
+
+            <h3>Type the following word:</h3>
+
+            <h2 id="word" class="py-10 orange bg-dark border-radius-small"></h2>
+
+            <input type="text" id="user-input" class="border-radius-small py-10 d-block">
+
+            <p>Press enter to confirm word</p>
+
+            <p id="warning-message" class="red bold hide">Input does not match</p>
+        </section>
+
+        <!-- GAME OVER -->
+        <section id="game-over" class="bg-silver d-inline-block p-30 border-radius-large hide absolute perfect-center">
+            <h3>Time ran out. You lost.</h3>
+
+            <p class="text-bigger">
+                Your score: <span id="lost-score" class="bold"></span>
+            </p>
+
+            <div id="gave-over-message" class="mb-20"></div>
+
+            <button class="start pure-button bg-green p-10">Play again</button>
+        </section>
+
+        <!-- RULES -->
+        <section id="overlay" class="bg-dark hide">
+            <div id="rules-text" class="bg-silver hide container">
+                <button class="rules pure-button bg-blue p-10 white">Close X</button>
+
+                <div>
+                    <p>When you start the game, you have 5 seconds to type the first given word.</p>
+                    <p>After you type the word correctly, press enter to confirm.</p>
+                    <p>For each correctly spelled word you´ll get +1 score point and time bonus.</p>
+
+                    <hr class="my-0 border-gray">
+                    <p>Time bonus depends on difficulty setting.</p>
+                    <p class="blue">Easy: +5s</p>
+                    <p class="orange">Medium: +3s</p>
+                    <p class="red">Hard: +2s</p>
+
+                    <hr class="my-0  border-gray">
+                    <p>
+                        <p class="orange bold">WARNING:</p>
+                        If you enter incorrectly written word, you´ll loose 1 score point.
+                        If your score is 0, you´ll loose -1s instead.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/typing.js"></script>
+
+    </div>
+
+</body>
+
+</html>

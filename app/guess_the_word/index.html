@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the word</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
+</head>
+
+<body class="bg-dark white">
+
+    <div class="container">
+        <h1 class="h2">Guess the word</h1>
+
+        <div id="hint" class="text-center"></div>
+
+        <label for="input" class="mt-30">type letter</label>
+        <input type="text" id="input" class="maw-300" maxlength="1" pattern="[A-Za-z]{1}" autofocus>
+
+        <div id="hangman">
+            <div class="text-center">
+                <span class="hide hangman-part">o</span>
+            </div>
+
+            <div class="text-center">
+                <span class="hide hangman-part">/</span>
+                <span class="hide hangman-part">|</span>
+                <span class="hide hangman-part">\</span>
+            </div>
+
+            <div class="text-center">
+                <span class="hide hangman-part">/</span>
+                <span class="hide hangman-part">\</span>
+            </div>
+        </div>
+
+        <div id="failed" class="hide text-center red"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

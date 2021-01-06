@@ -1,0 +1,240 @@
+/*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+/*!
+normalize.css v^3.0 | MIT License | git.io/normalize
+Copyright (c) Nicolas Gallagher and Jonathan Neal
+*/
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */.pure-button:focus,a:active,a:hover{outline:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}header,section{display:block}a{background-color:transparent}hr{box-sizing:content-box;height:0}button,input{color:inherit;font:inherit;margin:0}.pure-button,input{line-height:normal}button{overflow:visible}button{text-transform:none}button,html input[type=button]{-webkit-appearance:button;cursor:pointer}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}.pure-button{box-sizing:border-box}.pure-button{display:inline-block;zoom:1;white-space:nowrap;vertical-align:middle;text-align:center;cursor:pointer;-webkit-user-drag:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.pure-button::-moz-focus-inner{padding:0;border:0}.pure-button{font-family:inherit;font-size:100%;padding:.5em 1em;color:#444;color:rgba(0,0,0,.8);border:1px solid #999;border:transparent;background-color:#E6E6E6;text-decoration:none;border-radius:2px}.pure-button:focus,.pure-button:hover{filter:alpha(opacity=90);background-image:-webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));background-image:linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))}.pure-button:active{box-shadow:0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;border-color:#000\9}
+
+#game {
+    text-align: center;
+}
+
+#game-screen {
+    min-width: 280px;
+}
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#rules-text {
+    width: 100vw;
+    height: 100vh;
+}
+
+hr {
+    width: 80%;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+button {
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.perfect-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#difficulty-settings {
+    list-style-type: none;
+}
+
+#difficulty-settings li {
+    margin-bottom: 5px;
+}
+
+hr {
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
+    border-width: 0;
+    border-top: 1px solid #e1e1e1;
+}
+
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.border-gray {
+    border-color: gray;
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: #ff8c00;
+}
+
+.blue {
+    color: #1e90ff;
+}
+
+.white {
+    color: #fff;
+}
+
+.light-gray {
+    color: #eee;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-orange {
+    background-color: #ff8c00;
+}
+
+.bg-green {
+    background-color: #3cb371;
+}
+
+.bg-blue {
+    background-color: #1e90ff;
+}
+
+.bg-light-gray {
+    background-color: #eee;
+}
+
+.bg-silver {
+    background-color: rgb(220, 220, 220);
+}
+
+.bg-gray {
+    background-color: gray;
+}
+
+.bg-dark {
+    background-color: #333;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.text-bigger {
+    font-size: 125%;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.b-0 {
+    bottom: 0;
+}
+
+.l-0 {
+    left: 0;
+}
+
+.r-0 {
+    right: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.p-30 {
+    padding: 30px;
+}
+
+.py-10 {
+    padding: 10px 0;
+}
+
+.mx-20 {
+    margin: 0 20px;
+}
+
+.my-0 {
+    margin: 0 auto;
+}
+
+.my-30 {
+    margin: 30px 0;
+}
+
+.my-20 {
+    margin: 20px 0;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.border-radius-small {
+    border-radius: 5px;
+}
+
+.border-radius-large {
+    border-radius: 20px;
+}
+
+.d-block {
+    display: block;
+    width: 100%;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+    width: auto;
+}
+
+
+.hide {
+    display: none !important;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+

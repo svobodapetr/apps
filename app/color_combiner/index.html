@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Combiner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="../../favicon.png" type="image/x-icon">
+</head>
+
+<body class="bg-dark">
+
+    <div class="container mb-30">
+
+        <h1 class="h2 white">Color combiner</h1>
+
+        <p class="white">Specify background color and see how dark or white text looks on it.</p>
+
+        <div class="bg-gray border-radius-medium p-30 mt-30 mb-30 maw-400 center">
+
+            <div>
+                <label for="hue" class="d-inline-block mr-20">Hue</label>
+                <span class="white"></span>
+                <input type="range" name="hue" id="hue" class="range" min="0" max="360" data-unit="°">
+            </div>
+
+            <div>
+                <label for="saturation" class="d-inline-block mr-20">Saturation</label>
+                <span class="white"></span>
+                <input type="range" name="saturation" id="saturation" class="range" min="0" max="100" value="0" data-unit="%">
+            </div>
+
+            <div>
+                <label for="lightness" class="d-inline-block mr-20">Lightness</label>
+                <span class="white"></span>
+                <input type="range" name="lightness" id="lightness" class="range" min="0" max="100" value="90" data-unit="%">
+            </div>
+
+            <label for="text-color">Text color</label>
+            <select name="text-color" id="text-color">
+                <option value="dark">Dark</option>
+                <option value="white">White</option>
+            </select>
+
+        </div>
+
+        <div id="sample" class="hide mt-30 mx-auto p-30 maw-600 border-radius-medium">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quod ipsam. Sunt, fugit pariatur nihil
+                optio omnis vel molestiae voluptatibus ab blanditiis voluptatum totam similique!</p>
+            <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quod ipsam. Sunt, fugit pariatur nihil
+                    optio omnis vel molestiae ab blanditiis voluptatum totam similique!</b></p>
+            <p><i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, quod ipsam. Sunt, fugit pariatur nihil
+                    optio omnis vel molestiae voluptatibus ab blanditiis voluptatum totam similique!</i></p>
+        </div>
+    </div>
+
+    <script src="js/combiner.js"></script>
+
+</body>
+
+</html>
