@@ -2,3 +2,4 @@
 *.php
 *.bat
 log/
+cache/
