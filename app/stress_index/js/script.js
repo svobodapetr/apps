@@ -17,13 +17,14 @@ class StressApp {
     counter = document.getElementById('counter');
     resultElement = document.getElementById('result')
     points = this.getPoints();
+    deleteButtons = [];
+    latestSelected = null;
 
     constructor() {
 
-        this.showOptions()
+        this.showOptions();
 
-        this.initApp()
-
+        this.initApp();
 
     }
 
@@ -34,7 +35,9 @@ class StressApp {
         for (let point of this.points) {
 
             options += `
-                <option data-key="${point[0]}" value="${point[1]}">${point[0]}</option>
+                <option data-key="${point[0]}" value="${point[1]}">
+                    ${point[0]}
+                </option>
             `;
 
         }
@@ -51,6 +54,8 @@ class StressApp {
 
             this.addListItem();
 
+            this.initDeleteButtons();
+
         });
 
         this.countBtn.addEventListener('click', (event) => {
@@ -63,15 +68,43 @@ class StressApp {
 
     }
 
+    initDeleteButtons() {
+
+        this.deleteButtons = document.getElementsByClassName('delete-point')
+
+        for (let button of this.deleteButtons) {
+
+            button.addEventListener('click', (e) => {
+
+                let id = e.target.parentElement.dataset.value;
+                let option = document.querySelector(`option[value="${id}"]`);
+
+                option.classList.remove('selected');
+
+                this.list.removeChild(e.target.parentElement);
+
+                this.countPoints();
+
+            });
+
+        }
+
+    }
+
     addListItem() {
 
         if (this.select.value == '') return;
 
         this.list.classList.remove('hide');
+
         this.list.innerHTML += `
             <li data-value="${this.select.value}" class="list-item">
-            ${this.select.selectedOptions[0].innerHTML}</li>
+                ${this.select.selectedOptions[0].innerHTML}
+                <span class="delete-point">&times;</span>
+            </li>
         `;
+
+        this.latestSelected = this.select.selectedOptions[0];
 
         this.select.selectedOptions[0].classList.add('selected');
         this.select.value = '';

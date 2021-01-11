@@ -24,6 +24,7 @@ class MemoryCards {
 
     cards = null
     cardCount = 0
+    storagePrefix = 'memory_cards'
 
     constructor() {
 
@@ -42,6 +43,14 @@ class MemoryCards {
         this.initDeleteCard()
 
         this.initClearCards()
+
+        this.start()
+
+    }
+
+    start() {
+
+        if (this.cards.length == 0) return
 
         this.hideCards()
 
@@ -170,7 +179,16 @@ class MemoryCards {
 
         for (i; i < cardCount; i++) {
 
-            cards.push([localStorage.key(i), localStorage[[localStorage.key(i)]]]);
+            if (localStorage.key(i).search(this.storagePrefix) >= 0) {
+
+                let key = localStorage.key(i).replace(this.storagePrefix, '')
+
+                cards.push([
+                    key,
+                    localStorage[[localStorage.key(i)]]
+                ]);
+
+            }
 
         }
 
@@ -233,7 +251,7 @@ class MemoryCards {
 
         localStorage.clear();
 
-        alert('Notice: card deleted');
+        alert('Notice: cards deleted');
 
         location.reload();
 
@@ -245,7 +263,7 @@ class MemoryCards {
         let answer = this.answer.value;
         if (question == '' || answer == '') return false;
 
-        saveItem(question, answer);
+        this.saveItem(question, answer);
 
         hide(this.overlay);
 
@@ -345,6 +363,12 @@ class MemoryCards {
 
     }
 
+    saveItem(question, answer) {
+
+        localStorage.setItem(this.storagePrefix + question, answer);
+
+    }
+
 }
 
 function shuffle(items) {
@@ -362,11 +386,5 @@ function show(element) {
 function hide(element) {
 
     if (! element.classList.contains('hide')) element.classList.add('hide');
-
-}
-
-function saveItem(question, answer) {
-
-    localStorage.setItem(question, answer);
 
 }
