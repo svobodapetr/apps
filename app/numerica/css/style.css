@@ -1142,6 +1142,16 @@ button:hover,
     filter: brightness(110%);
 }
 
+/* CUSTOM STYLE */
+.capitalize {
+    text-transform: capitalize;
+}
+
+footer {
+    display: none;
+}
+
+
 /* MEDIA QUERIES */
 @media screen and (min-width: 480px) {
 
@@ -1169,9 +1179,8 @@ button:hover,
         width: 50%;
     }
 
-}
+    footer {
+        display: block;
+    }
 
-/* CUSTOM STYLE */
-.capitalize {
-    text-transform: capitalize;
 }
