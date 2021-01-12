@@ -239,13 +239,15 @@ function getFateNumber(date) {
 
     }
 
-    if (finalNumber > 9) {
+    if (finalNumber > 9 && finalNumber != 11 && finalNumber != 22) {
 
         finalNumber = finalNumber.toString().split('').reduce(
             (total, num) => parseInt(total) + parseInt(num)
         );
 
     }
+
+    console.log('final ' + finalNumber);
 
     let fateNumber = finalNumber
     if (fateNumber > 9 && fateNumber != 11 && fateNumber != 22) {
@@ -255,6 +257,8 @@ function getFateNumber(date) {
         );
 
     }
+
+    console.log('fate ' + fateNumber);
 
     return fateNumber
 }
