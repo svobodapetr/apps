@@ -613,6 +613,11 @@ a:hover {
     filter: brightness(110%);
 }
 
+.small {
+    font-size: 80%;
+    color: gray;
+}
+
 /* forms */
 
 form {
@@ -886,6 +891,10 @@ button:hover,
     text-align: left;
 }
 
+.justify {
+    text-align: justify !important
+}
+
 .underlined {
     text-decoration: underline;
 }
@@ -907,10 +916,6 @@ button:hover,
 
 .bottom {
     bottom: 0
-}
-
-.justify {
-    text-align: justify !important
 }
 
 /* padding */

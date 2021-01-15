@@ -1,6 +1,6 @@
-function getNumbersInfo(day) {
+function getNumbersInfo(number) {
 
-    return getNumbers()[day]
+    return getNumbers()[number]
 
 }
 

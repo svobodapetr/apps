@@ -97,7 +97,7 @@ function initNumbersInfo() {
 
     if (!document.getElementById('numbers-info')) return
 
-    // document.getElementById('numbers-info').addEventListener('click', (e) => {
+    document.getElementById('numbers-info').addEventListener('click', (e) => {
 
         let dateElement = document.getElementById('date')
         if (dateElement.validity.valueMissing) return
@@ -106,7 +106,7 @@ function initNumbersInfo() {
 
         showNumbersInfo()
 
-    // })
+    })
 
 }
 
@@ -158,9 +158,7 @@ function showMonthInfo() {
 
 function showFateInfo() {
 
-    let date = new Date(localStorage.getItem('date_of_birth'))
-
-    let fateNumber = getFateNumber(date)
+    let fateNumber = getFateNumber()
 
     let fateInfo = getFateInfo(fateNumber)
 
@@ -203,11 +201,22 @@ function showFateInfo() {
 
 function showNumbersInfo() {
 
-    let numbers = getOddEvenNumbers()
+    let dateValue = localStorage.getItem('date_of_birth').replace(/-|0/g, '')
 
-    console.log(
-        numbers
-    );
+    let uniqueNumbers = [...new Set(dateValue)].sort()
+
+    let html = '<h4 class="text-center">Rozbor jednotlivých číslic</h4>'
+
+    for (let number of uniqueNumbers) {
+
+        html += `<p><span class="bold">${number}</span> - ${getNumbersInfo(number).description}</p>`
+
+    }
+
+    html += '<p class="small">čím více se číslo v datu opakuje, tím větší má vliv</p>'
+    html += '<p class="small">0 posiluje číslo, za kterým stojí (10 je jako 11) tedy větší vliv čísla 1</p>'
+
+    document.getElementById('output').innerHTML = html
 
 }
 
@@ -243,25 +252,12 @@ function getOddEvenNumbers() {
 
 }
 
-function getFateNumber(date) {
+function getFateNumber() {
 
-    let day = date.getDate()
-    let month = date.getMonth() + 1
-    let year = date.getFullYear()
+    let dateValue = localStorage.getItem('date_of_birth').replace(/-|0/g, '')
+    let numbers = dateValue.split('')
 
-    let numbersArray = [
-        day.toString().split(''),
-        month.toString().split(''),
-        year.toString().split(''),
-    ]
-
-    let finalNumber = 0
-
-    for (let numbers of numbersArray) {
-
-        finalNumber += parseInt(numbers.reduce((total, num) => parseInt(total) + parseInt(num)));
-
-    }
+    let finalNumber = numbers.reduce((total, num) => parseInt(total) + parseInt(num))
 
     if (finalNumber > 9 && finalNumber != 11 && finalNumber != 22) {
 
@@ -271,8 +267,6 @@ function getFateNumber(date) {
 
     }
 
-    console.log('final ' + finalNumber);
-
     let fateNumber = finalNumber
     if (fateNumber > 9 && fateNumber != 11 && fateNumber != 22) {
 
@@ -281,8 +275,6 @@ function getFateNumber(date) {
         );
 
     }
-
-    console.log('fate ' + fateNumber);
 
     return fateNumber
 
