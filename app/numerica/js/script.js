@@ -10,6 +10,10 @@ import {
     getFateInfo
 } from './fate.js'
 
+import {
+    getNumbersInfo
+} from './numbers.js'
+
 window.onload = () => {
 
     initLS()
@@ -34,6 +38,8 @@ function initNumerica() {
 
     initFateInfo()
 
+    initNumbersInfo()
+
 }
 
 function initDayInfo() {
@@ -45,11 +51,9 @@ function initDayInfo() {
         let dateElement = document.getElementById('date')
         if (dateElement.validity.valueMissing) return
 
-        let date = new Date(dateElement.valueAsDate)
-
         localStorage.setItem('date_of_birth', dateElement.value)
 
-        showDayInfo(date)
+        showDayInfo()
 
     })
 
@@ -64,11 +68,9 @@ function initMonthInfo() {
         let dateElement = document.getElementById('date')
         if (dateElement.validity.valueMissing) return
 
-        let date = new Date(dateElement.valueAsDate)
-
         localStorage.setItem('date_of_birth', dateElement.value)
 
-        showMonthInfo(date)
+        showMonthInfo()
 
     })
 
@@ -83,139 +85,161 @@ function initFateInfo() {
         let dateElement = document.getElementById('date')
         if (dateElement.validity.valueMissing) return
 
-        let date = new Date(dateElement.valueAsDate)
-
         localStorage.setItem('date_of_birth', dateElement.value)
 
-        showFateInfo(date)
+        showFateInfo()
 
     })
 
 }
 
-function showDayInfo(date) {
+function initNumbersInfo() {
+
+    if (!document.getElementById('numbers-info')) return
+
+    // document.getElementById('numbers-info').addEventListener('click', (e) => {
+
+        let dateElement = document.getElementById('date')
+        if (dateElement.validity.valueMissing) return
+
+        localStorage.setItem('date_of_birth', dateElement.value)
+
+        showNumbersInfo()
+
+    // })
+
+}
+
+function showDayInfo() {
+
+    let date = new Date(localStorage.getItem('date_of_birth'))
 
     let dayNumber = date.getDate()
 
     let dayInfo = getDayInfo(dayNumber)
 
-    let label = document.createElement('h4')
-    label.innerText = 'Co vypovídá den narození'
+    let html = `
+        <div class="day"></div>
+            <h4>Co vypovídá den narození</h4>
+            <h4>${dayNumber}</h4>
+            <p class="bold">Chrakteristický prvek</p>
+            <p class="keyword capitalize">${dayInfo.keyword}</p>
+            <p class="bold">Vlastnosti</p>
+            <p class="description">${dayInfo.description}</p>
+            <p class="bold">Na co si dát pozor</p>
+            <p class="warning">${dayInfo.warning}</p>
+        </div>
+    `
 
-    let day = document.createElement('h4')
-    day.innerText = dayNumber
-
-    let keyword = document.createElement('p')
-    keyword.className = 'keyword capitalize'
-    keyword.innerText = dayInfo.keyword
-
-    let keywordLabel = document.createElement('p')
-    keywordLabel.className = 'bold'
-    keywordLabel.innerText = 'Chrakteristický prvek'
-
-    let descriptionLabel = document.createElement('p')
-    descriptionLabel.className = 'bold'
-    descriptionLabel.innerText = 'Vlastnosti'
-
-    let description = document.createElement('p')
-    description.className = 'description'
-    description.innerText = dayInfo.description
-
-    let warningLabel = document.createElement('p')
-    warningLabel.className = 'bold'
-    warningLabel.innerText = 'Na co si dát pozor'
-
-    let warning = document.createElement('p')
-    warning.className = 'warning'
-    warning.innerText = dayInfo.warning
-
-    let wrapper = document.createElement('div')
-    wrapper.className = 'day'
-    wrapper.appendChild(label)
-    wrapper.appendChild(day)
-    wrapper.appendChild(keywordLabel)
-    wrapper.appendChild(keyword)
-    wrapper.appendChild(descriptionLabel)
-    wrapper.appendChild(description)
-    wrapper.appendChild(warningLabel)
-    wrapper.appendChild(warning)
-
-    document.getElementById('output').innerHTML = ''
-    document.getElementById('output').appendChild(wrapper)
+    document.getElementById('output').innerHTML = html
 
 }
 
-function showMonthInfo(date) {
+function showMonthInfo() {
+
+    let date = new Date(localStorage.getItem('date_of_birth'))
 
     let monthNumber = date.getMonth() + 1
 
     let monthInfo = getMonthInfo(monthNumber)
 
-    let label = document.createElement('h4')
-    label.innerText = 'Co vypovídá měsíc narození'
+    let html = `
+        <div class="month"></div>
+            <h4>Co vypovídá měsíc narození</h4>
+            <h4>${monthNumber}</h4>
+            <p class="bold">Vlastnosti</p>
+            <p class="description">${monthInfo.description}</p>
+        </div>
+    `
 
-    let month = document.createElement('h4')
-    month.innerText = monthNumber
-
-    let descriptionLabel = document.createElement('p')
-    descriptionLabel.className = 'bold'
-    descriptionLabel.innerText = 'Vlastnosti'
-
-    let description = document.createElement('p')
-    description.className = 'description'
-    description.innerText = monthInfo.description
-
-    let wrapper = document.createElement('div')
-    wrapper.className = 'month'
-    wrapper.appendChild(label)
-    wrapper.appendChild(month)
-    wrapper.appendChild(descriptionLabel)
-    wrapper.appendChild(description)
-
-    document.getElementById('output').innerHTML = ''
-    document.getElementById('output').appendChild(wrapper)
+    document.getElementById('output').innerHTML = html
 
 }
 
-function showFateInfo(date) {
+function showFateInfo() {
+
+    let date = new Date(localStorage.getItem('date_of_birth'))
 
     let fateNumber = getFateNumber(date)
 
     let fateInfo = getFateInfo(fateNumber)
 
-    let label = document.createElement('h4')
-    label.innerText = 'Co vypovídá vaše osudové číslo'
+    let evenOddNumbers = getOddEvenNumbers()
 
-    let fate = document.createElement('h4')
-    fate.innerText = fateNumber
+    let gender_energy = null
 
-    let descriptionLabel = document.createElement('p')
-    descriptionLabel.className = 'bold'
-    descriptionLabel.innerText = 'Popis'
+    if (evenOddNumbers.even.length > evenOddNumbers.odd.length) {
 
-    let description = document.createElement('p')
-    description.className = 'description'
-    description.innerText = fateInfo.description
+        gender_energy = 'spíše ženská (pasivní)'
 
-    let warningLabel = document.createElement('p')
-    warningLabel.className = 'bold'
-    warningLabel.innerText = 'Na co si dát pozor'
+    }
+    else if (evenOddNumbers.even.length == evenOddNumbers.odd.length) {
 
-    let warning = document.createElement('p')
-    warning.className = 'warning'
-    warning.innerText = fateInfo.warning
+        gender_energy = 'vyrovnaná'
 
-    let wrapper = document.createElement('div')
-    wrapper.className = 'fate'
-    wrapper.appendChild(label)
-    wrapper.appendChild(fate)
-    wrapper.appendChild(descriptionLabel)
-    wrapper.appendChild(description)
-    wrapper.appendChild(warningLabel)
-    wrapper.appendChild(warning)
+    }
+    else {
 
-    document.getElementById('output').innerHTML = ''
-    document.getElementById('output').appendChild(wrapper)
+        gender_energy = 'spíše mužská (aktivní)'
+
+    }
+
+    let html = `
+        <div class="fate"></div>
+            <h4>Co vypovídá vaše osudové číslo</h4>
+            <h4>${fateNumber}</h4>
+            <p class="bold">Popis</p>
+            <p class="description">${fateInfo.description}</p>
+            <p class="bold">Na co si dát pozor</p>
+            <p class="warning">${fateInfo.warning}</p>
+            <p class="bold">Energie</p>
+            <p class="energy">Energie vašeho data narození je ${gender_energy}</p>
+        </div>
+    `
+
+    document.getElementById('output').innerHTML = html
+
+}
+
+function showNumbersInfo() {
+
+    let numbers = getOddEvenNumbers()
+
+    console.log(
+        numbers
+    );
+
+}
+
+function getOddEvenNumbers() {
+
+    let dateValue = localStorage.getItem('date_of_birth').replace(/-/g, '')
+    let numbersArray = dateValue.split('')
+    let odd = []
+    let even = []
+
+    for (let number of numbersArray) {
+
+        if (parseInt(number) % 2 == 0 && parseInt(number) > 0) {
+
+            even.push(number)
+
+        }
+        else if (parseInt(number) == 0) {
+
+        }
+        else {
+
+            odd.push(number)
+
+        }
+
+    }
+
+    return {
+        odd: odd,
+        even: even
+    }
 
 }
 
@@ -261,4 +285,5 @@ function getFateNumber(date) {
     console.log('fate ' + fateNumber);
 
     return fateNumber
+
 }
